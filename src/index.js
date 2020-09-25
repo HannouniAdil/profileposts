@@ -1,28 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route, NavLink, Switch } from 'react-router-dom';
 
 //Components
 import Home from './components/home';
 import Profiles from './components/profiles';
 import Posts from './components/posts';
+import PostItem from './components/post_item'
 
 const App = () => {
 return (
   <BrowserRouter>
       <div>
         <header>
-          <Link to='/'>Home</Link><br/>
-          <Link to='/posts'>Posts</Link><br/>
-          <Link to={{
-            pathname: '/profiles',
-            hash: '#entryArgument',
-            search: '?index=1'
-          }}>Profiles</Link>
+          <NavLink to='/'>Home</NavLink><br/>
+          <NavLink 
+          to='/posts'
+          activeStyle={{color:'red'}}
+          >Posts</NavLink><br/>
+          <NavLink 
+          to='/profiles'
+          activeStyle={{color:'red'}}
+          >Profiles</NavLink>
         </header>
-        <Route path="/" exact component={Home}/> 
-        <Route path="/posts" component={Posts}/> 
-        <Route path="/profiles" component={Profiles}/> 
+        <Switch>
+          <Route path="/posts/:id/:username" component={PostItem}/> 
+          <Route path="/profiles" component={Profiles}/> 
+          <Route path="/posts" component={Posts}/> 
+          <Route path="/" component={Home}/> 
+        </Switch>    
       </div>
   </BrowserRouter>
 )

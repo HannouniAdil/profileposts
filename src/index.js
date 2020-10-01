@@ -28,7 +28,8 @@ return (
           <Route path="/posts/:id/:username" component={PostItem}/> 
           <Route path="/profiles" component={Profiles}/> 
           <Route path="/posts" component={Posts}/> 
-          <Route path="/" component={Home}/> 
+          <Route path="/" exact component={Home}/> 
+          <Route render={() =><div><h1>Oopss 404</h1></div>} />
         </Switch>    
       </div>
   </BrowserRouter>

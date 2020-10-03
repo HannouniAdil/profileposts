@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, NavLink, Switch } from 'react-router-dom';
 
 //Components
 import Home from './components/home';
@@ -24,7 +24,6 @@ return (
           >Profiles</NavLink>
         </header>
         <Switch>
-          <Redirect from="/posts" to="/" />
           <Route path="/posts/:id/:username" component={PostItem}/> 
           <Route path="/profiles" component={Profiles}/> 
           <Route path="/posts" component={Posts}/> 
